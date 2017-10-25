@@ -1,4 +1,9 @@
 import application.SampleApplication;
+
+import entity.AnimalFactory.*;
+import entity.HouseBuilder.Pigpen;
+import entity.HouseBuilder.PigpenBuilder;
+
 import behavior.Performable;
 import behavior.templates.Coder;
 import behavior.templates.Dancer;
