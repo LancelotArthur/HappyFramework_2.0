@@ -1,8 +1,8 @@
 package entity.plant;
 
-import entity.Entity;
+import entity.Product;
 
-public class PlantProduct extends Entity {
+public class PlantProduct extends Product {
     protected PlantProduct() {
         super();
     }

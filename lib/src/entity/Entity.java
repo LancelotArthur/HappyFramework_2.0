@@ -22,6 +22,8 @@ public abstract class Entity implements Printable, Cloneable {
         try {
             print("Cloning");
             result = super.clone();
+            ((Entity) result).id = number++;
+
         } catch (CloneNotSupportedException e) {
             print("Oops, clone not supported");
         }
