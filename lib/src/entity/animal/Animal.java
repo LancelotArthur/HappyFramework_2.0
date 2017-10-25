@@ -14,8 +14,25 @@ public abstract class Animal extends Entity implements AnimalBehavior {
         super();
     }
 
+    protected Animal(boolean sex) {
+        super();
+        this.sex = sex;
+    }
+
     @Override
     public Group<Product> yield(int count) {
         return null;
+    }
+
+    public boolean isFemale() {
+        return sex;
+    }
+
+    public boolean isPreg() {
+        return preg;
+    }
+
+    public void makePregnant() {
+        preg = true;
     }
 }

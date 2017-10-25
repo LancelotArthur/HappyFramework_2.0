@@ -8,6 +8,10 @@ public class Dog extends Animal {
         super();
     }
 
+    public Dog(boolean sex) {
+        super(sex);
+    }
+
     @Override
     public void speak() {
         print("Woof! Woof! Woof!");

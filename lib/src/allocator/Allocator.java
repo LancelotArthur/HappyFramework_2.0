@@ -2,7 +2,8 @@ package allocator;
 
 import application.Printable;
 import entity.Entity;
-
+import entity.animal.Animal;
+import entity.plant.Plant;
 
 
 interface Obtainable {
@@ -10,7 +11,7 @@ interface Obtainable {
 }
 
 
-public class Allocator<T extends Entity> implements Obtainable {
+public class Allocator<T extends Entity> implements Obtainable, Printable {
 
 
     private Strategy strategy = Strategy.PURCHASE;
@@ -30,7 +31,21 @@ public class Allocator<T extends Entity> implements Obtainable {
 
     public void setObtainArguments(Strategy strategy, T mother) {
         this.strategy = strategy;
-        this.mother = mother;
+        if (strategy == Strategy.REPRODUCE) {
+            if (Animal.class.isAssignableFrom(mother.getClass())) {
+                // if mother's class extends Animal
+                if (((Animal) mother).isFemale()) this.mother = mother;
+                else {
+                    print("Male animals cannot reproduce children!");
+                }
+            } else if (Plant.class.isAssignableFrom(mother.getClass())) {
+                // if mother's class extends Plant
+                this.mother = mother;
+            } else {
+                // if mother's class extends another class
+                print("Only animals and plants can reproduce children!");
+            }
+        }
     }
 }
 
@@ -56,6 +71,16 @@ class ReproduceProxy<T extends Entity> implements Obtainable, Printable {
 
     @SuppressWarnings(value = {"unchecked"})
     public T obtain() {
+        if (mother == null) {
+            print("No mother!");
+            return null;
+        }
+        if (Animal.class.isAssignableFrom(mother.getClass())) {
+            if (!((Animal) mother).isPreg()) {
+                print("Wait! The mother has not been pregnant!");
+                return null;
+            }
+        }
         print("A child was born!");
         return (T) mother.clone();
     }
