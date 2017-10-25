@@ -1,4 +1,4 @@
-package entity.animal.behavior;
+package behavior;
 
 public interface Transformable<T> {
 

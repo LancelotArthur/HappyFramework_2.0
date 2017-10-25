@@ -1,9 +1,7 @@
-package entity;
+package behavior;
 
 import application.Printable;
-import entity.animal.behavior.Transformable;
-import entity.animal.template.Dog;
-import entity.plant.template.AppleTree;
+
 
 public class Transform<T, S> implements Transformable<S>, Printable {
 

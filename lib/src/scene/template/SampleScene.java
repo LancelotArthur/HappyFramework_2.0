@@ -2,7 +2,6 @@ package scene.template;
 
 import allocator.Allocator;
 import allocator.Strategy;
-import entity.Transform;
 import entity.animal.template.Dog;
 import entity.plant.template.AppleTree;
 import scene.Scene;

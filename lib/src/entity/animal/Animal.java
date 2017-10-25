@@ -7,8 +7,8 @@ import entity.group.Group;
 
 public abstract class Animal extends Entity implements AnimalBehavior {
 
-    private boolean sex;
-    private boolean preg;
+    private boolean sex = true;
+    private boolean pregnant = false;
 
     protected Animal() {
         super();
@@ -28,11 +28,11 @@ public abstract class Animal extends Entity implements AnimalBehavior {
         return sex;
     }
 
-    public boolean isPreg() {
-        return preg;
+    public boolean isPregnant() {
+        return pregnant;
     }
 
     public void makePregnant() {
-        preg = true;
+        pregnant = true;
     }
 }

@@ -76,7 +76,7 @@ class ReproduceProxy<T extends Entity> implements Obtainable, Printable {
             return null;
         }
         if (Animal.class.isAssignableFrom(mother.getClass())) {
-            if (!((Animal) mother).isPreg()) {
+            if (!((Animal) mother).isPregnant()) {
                 print("Wait! The mother has not been pregnant!");
                 return null;
             }
