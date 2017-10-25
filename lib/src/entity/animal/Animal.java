@@ -2,17 +2,20 @@ package entity.animal;
 
 import behavior.animal.AnimalBehavior;
 import entity.Entity;
+import entity.Product;
+import entity.group.Group;
 
 public abstract class Animal extends Entity implements AnimalBehavior {
-    protected AnimalType animalType;
+
+    private boolean sex;
+    private boolean preg;
 
     protected Animal() {
         super();
     }
 
-    public AnimalType getAnimalType() {
-        return animalType;
+    @Override
+    public Group<Product> yield(int count) {
+        return null;
     }
-
-    abstract public Animal purchaseAgain();
 }
