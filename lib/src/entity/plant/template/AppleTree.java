@@ -23,8 +23,6 @@ public class AppleTree extends Plant {
 
     }
 
-    @Override
-    public Plant purchaseAgain() {
-        return new AppleTree();
-    }
+
+
 }
