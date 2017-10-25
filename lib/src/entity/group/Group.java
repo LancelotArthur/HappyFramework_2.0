@@ -1,3 +1,4 @@
+
 package entity.group;
 
 
@@ -80,5 +81,4 @@ public class Group<T extends Entity> extends Entity {
         }
     }
 }
-
 
