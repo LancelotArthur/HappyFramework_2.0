@@ -16,9 +16,10 @@ public class SampleApplication extends Application {
     @Override
     public void initialize() {
         SampleScene s1 = new SampleScene();
-        addScene(s1);
+        s1.action();
+        //addScene(s1);
         SampleScene s2 = new SampleScene();
-        addScene(s2);
+        //addScene(s2);
         SampleScene s3 = new SampleScene();
     }
 

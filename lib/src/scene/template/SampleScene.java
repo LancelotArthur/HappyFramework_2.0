@@ -1,5 +1,7 @@
 package scene.template;
 
+import application.ConcreteMediator;
+import entity.human.templete.ConcreteHandler;
 import scene.Scene;
 
 public class SampleScene extends Scene {
@@ -16,6 +18,29 @@ public class SampleScene extends Scene {
     public void action() {
         print("Scene acts...");
         // Write your code here.
+
+        //mediator test
+        ConcreteMediator mediator = new ConcreteMediator();
+        SceneA sceneA = new SceneA("sceneA",mediator);
+        SceneB sceneB = new SceneB("sceneB",mediator);
+        SceneC sceneC = new SceneC("sceneC",mediator);
+        mediator.setSceneA(sceneA);
+        mediator.setSceneB(sceneB);
+        mediator.setSceneC(sceneC);
+        sceneA.change("b");
+        sceneB.change("c");
+        sceneC.change("a");
+
+        //Chain of Responsibility test
+        ConcreteHandler handler1 = new ConcreteHandler("Ya",false,17);
+        ConcreteHandler handler2 = new ConcreteHandler("Bob",false,20,7);
+        ConcreteHandler handler3 = new ConcreteHandler("May",true,25,8);
+        handler1.setSuccessor(handler2);
+        handler2.setSuccessor(handler3);
+        handler1.handleRequest(5);
+        handler1.handleRequest(1);
+
+
 
 //        // Timer test
 //        Timer timer = Timer.getInstance();

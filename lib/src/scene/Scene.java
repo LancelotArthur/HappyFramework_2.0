@@ -13,7 +13,8 @@ public abstract class Scene implements Printable, Actionable {
     //中介者
     protected Director mediator;
     //可直接设置中介者
-    public Scene(Director mediator){
+    public Scene(String name,Director mediator){
+        sceneName = name;
         this.mediator = mediator;
     }
     //在抽象同事类中添加用于与中介者取得联系（即注册）的方法
