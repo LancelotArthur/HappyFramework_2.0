@@ -1,12 +1,8 @@
 package application;
 
-public class Director {
-    private static Director director = new Director();
+import scene.Scene;
 
-    private Director() {
-    }
-
-    public static Director getInstance() {
-        return director;
-    }
+public abstract class Director {
+    //场景切换函数，根据传入的信息和信息发送者进行判断后，对场景切换
+    public abstract void change(String message, Scene scene);
 }

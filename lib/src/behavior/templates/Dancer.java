@@ -11,6 +11,6 @@ public class Dancer extends Skill {
     @Override
     public void performAction() {
         super.performAction();
-        print("Dancing");
+        print("Dancing.");
     }
 }

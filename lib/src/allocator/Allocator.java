@@ -5,46 +5,34 @@ import entity.Entity;
 import entity.animal.Animal;
 import entity.plant.Plant;
 
-
 interface Obtainable {
     Entity obtain();
 }
 
-
 public class Allocator<T extends Entity> implements Obtainable, Printable {
 
-
-    private Strategy strategy = Strategy.PURCHASE;
+    private Obtainable proxy = new PurchaseProxy<T>();
     private T mother = null;
 
+    @SuppressWarnings(value = {"unchecked"})
     public T obtain() {
-        T result = null;
-        if (strategy == Strategy.PURCHASE) {
-            PurchaseProxy<T> purchaseProxy = new PurchaseProxy<>();
-            result = purchaseProxy.obtain();
-        } else if (strategy == Strategy.REPRODUCE) {
-            ReproduceProxy<T> reproduceProxy = new ReproduceProxy<>(mother);
-            result = reproduceProxy.obtain();
-        }
-        return result;
+        return (T)proxy.obtain();
     }
 
-    public void setObtainArguments(Strategy strategy, T mother) {
-        this.strategy = strategy;
-        if (strategy == Strategy.REPRODUCE) {
-            if (Animal.class.isAssignableFrom(mother.getClass())) {
-                // if mother's class extends Animal
-                if (((Animal) mother).isFemale()) this.mother = mother;
-                else {
-                    print("Male animals cannot reproduce children!");
-                }
-            } else if (Plant.class.isAssignableFrom(mother.getClass())) {
-                // if mother's class extends Plant
-                this.mother = mother;
-            } else {
-                // if mother's class extends another class
-                print("Only animals and plants can reproduce children!");
-            }
+    public void setMother(T mother) {
+        this.mother = mother;
+    }
+
+    public void setObtainArguments(ObtainStrategy obtainStrategy) {
+        switch (obtainStrategy) {
+            case PURCHASE:
+                this.proxy = new PurchaseProxy<T>();
+                break;
+            case REPRODUCE:
+                this.proxy = new ReproduceProxy<>(mother);
+                break;
+            default:
+                print("No such obtainStrategy.");
         }
     }
 }
@@ -54,32 +42,42 @@ class PurchaseProxy<T extends Entity> implements Obtainable, Printable {
     }
 
     public T obtain() {
-        print("Buying Something");
-        //TODO To add Factory Method and Abstract Method etc.
+        print("Buying something...");
         return null;
     }
 }
 
 class ReproduceProxy<T extends Entity> implements Obtainable, Printable {
 
-    private T mother;
+    private T mother = null;
 
     ReproduceProxy(T mother) {
-        this.mother = mother;
-    }
+        if (mother == null) {
+            this.mother = null;
+            return;
+        }
 
+        if (Animal.class.isAssignableFrom(mother.getClass())) {
+            // if mother's class extends Animal
+            if (!((Animal) mother).isMale()) {
+                this.mother = mother;
+            } else {
+                print("Male animals cannot reproduce children!");
+            }
+        } else if (Plant.class.isAssignableFrom(mother.getClass())) {
+            // if mother's class extends Plant
+            this.mother = mother;
+        } else {
+            // if mother's class extends another class
+            print("Only animals and plants can reproduce children!");
+        }
+    }
 
     @SuppressWarnings(value = {"unchecked"})
     public T obtain() {
-        if (mother == null) {
-            print("No mother!");
+        if (this.mother == null) {
+            print("No available mother. Nothing was born.");
             return null;
-        }
-        if (Animal.class.isAssignableFrom(mother.getClass())) {
-            if (!((Animal) mother).isPregnant()) {
-                print("Wait! The mother has not been pregnant!");
-                return null;
-            }
         }
         print("A child was born!");
         return (T) mother.clone();

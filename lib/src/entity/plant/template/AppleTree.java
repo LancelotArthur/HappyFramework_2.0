@@ -3,6 +3,7 @@ package entity.plant.template;
 import entity.Product;
 import entity.group.Group;
 import entity.plant.Plant;
+import entity.plant.PlantProduct;
 
 public class AppleTree extends Plant {
 
@@ -23,4 +24,8 @@ public class AppleTree extends Plant {
 
     }
 
+    @Override
+    public Plant purchaseAgain() {
+        return new AppleTree();
+    }
 }

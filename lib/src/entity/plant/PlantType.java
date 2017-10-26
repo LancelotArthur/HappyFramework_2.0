@@ -11,6 +11,6 @@ package entity.plant;
  * <p>
  * Notes: DO NOT prototype classes with a character '_' in the name
  */
-enum PlantType {
+public enum PlantType {
     AppleTree,
 }

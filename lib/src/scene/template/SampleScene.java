@@ -1,9 +1,5 @@
 package scene.template;
 
-import allocator.Allocator;
-import allocator.Strategy;
-import entity.animal.template.Dog;
-import entity.plant.template.AppleTree;
 import scene.Scene;
 
 public class SampleScene extends Scene {
@@ -11,30 +7,45 @@ public class SampleScene extends Scene {
         super();
     }
 
-    public SampleScene(String string) {
-        super(string);
+    @Override
+    public void init() {
+        print("Initializing scene...");
     }
-
 
     @Override
     public void action() {
+        print("Scene acts...");
+        // Write your code here.
+
+//        // Timer test
+//        Timer timer = Timer.getInstance();
+//        long deltaTime = timer.getDeltaTime();
+//        System.out.println(deltaTime);
+
+//        // Allocator test
+//        Allocator<Dog> dogAllocator = new Allocator<>();
+//        dogAllocator.setObtainArguments(ObtainStrategy.PURCHASE);
+//        Dog doggy = dogAllocator.obtain();
+//        dogAllocator.setMother(doggy);
+//        dogAllocator.setObtainArguments(ObtainStrategy.REPRODUCE);
+//        Dog doggyChild = dogAllocator.obtain();
+//
+//        System.out.println(doggyChild.getClass());
+
+
         // TODO: Create entity using factory method or abstract factory method
-        Dog doggy = new Dog(true);
-        doggy.move();
-        doggy.speak();
-
-        Allocator<Dog> dogAllocator = new Allocator<>();
-        dogAllocator.setObtainArguments(Strategy.REPRODUCE, doggy);
-        Dog newDog = dogAllocator.obtain();
 
 
-        AppleTree appleTree = new AppleTree();
-        Allocator<AppleTree> appleTreeAllocator = new Allocator<>();
-        appleTreeAllocator.setObtainArguments(Strategy.PURCHASE, null);
-        AppleTree tree1 = appleTreeAllocator.obtain();
-        appleTreeAllocator.setObtainArguments(Strategy.REPRODUCE, appleTree);
-        AppleTree tree2 = appleTreeAllocator.obtain();
+//        // Transform test
+//        Dog doggy = new Dog();
+//        Transform<Dog, Dog> dogDogTransform = new Transform<>(doggy);
+//        dogDogTransform.transform();
+//        System.out.println(dogDogTransform.getTarget());
 
+
+//        Staff staff = new Supervisor("a", true);
+//        Iterator iterator =  staff.iterator();
+//        iterator.hasNext()
 
     }
 }

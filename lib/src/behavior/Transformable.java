@@ -1,24 +1,24 @@
 package behavior;
 
-public interface Transformable<T> {
+import entity.Entity;
+
+public interface Transformable<Target extends Entity, Source> {
 
     /**
      * get current type of entity
      * @return the Entity
      */
-    String getCurrentEntity();
+    Target getTarget();
 
     /**
      * activate the transformation, change the type of current class
-     * @param newEntity the destination class, use new Class()
-     * @return the result of the transformation, usually true
      */
-    boolean transform(T newEntity);
+    void transform();
 
     /**
      * get the previous type of the entity
      * @return the previous class name of this entity
      */
-    String getPreviousEntity();
+    Source getSource();
 
 }
