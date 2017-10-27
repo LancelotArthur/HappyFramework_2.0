@@ -21,12 +21,12 @@ public class CareTaker {
         return undoList.get(index);
     }
 
-    public void setEntity(Creature entity) {
-        this.entity = entity;
-    }
-
     public Entity getEntity() {
         return entity;
+    }
+
+    public void setEntity(Creature entity) {
+        this.entity = entity;
     }
 
     public void undo() {

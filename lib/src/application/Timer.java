@@ -1,6 +1,6 @@
 package application;
 
-public class Timer implements Printable{
+public class Timer implements Printable {
     private static Timer timer;
     private static long startTime;
 
@@ -9,11 +9,11 @@ public class Timer implements Printable{
         startTime = System.currentTimeMillis();
     }
 
-    public static Timer getInstance() {
-        return timer;
+    private Timer() {
     }
 
-    private Timer() {
+    public static Timer getInstance() {
+        return timer;
     }
 
     public void setStartTime() {

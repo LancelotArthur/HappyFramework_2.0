@@ -17,7 +17,6 @@ public abstract class Entity implements Printable, Cloneable {
     }
 
 
-
     @Override
     public Object clone() {
 

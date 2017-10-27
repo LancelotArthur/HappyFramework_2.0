@@ -22,12 +22,12 @@ public abstract class Human extends Entity implements Performable {
         this.command = null;
     }
 
-    public void setCommand(Commandable command) {
-        this.command = command;
-    }
-
     public Commandable getCommand() {
         return command;
+    }
+
+    public void setCommand(Commandable command) {
+        this.command = command;
     }
 
     public void doCommand() {

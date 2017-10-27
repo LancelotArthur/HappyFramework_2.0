@@ -3,7 +3,7 @@ package entity.human.templete;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Supervisor extends Staff{
+public class Supervisor extends Staff {
 
     private List<Staff> under = new ArrayList<>();
 

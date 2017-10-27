@@ -14,6 +14,7 @@ public abstract class Door {
         this.material = 0;
         this.shape = 0;
     }
+
     public Door(int material, int shape) {
         this.material = material;
         this.shape = shape;

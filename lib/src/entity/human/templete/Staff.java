@@ -10,7 +10,7 @@ public class Staff extends Human {
         super(name, sex);
     }
 
-    public Staff(String name, boolean sex ,double age) {
+    public Staff(String name, boolean sex, double age) {
         super(name, sex, age);
     }
 

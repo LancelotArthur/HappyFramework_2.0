@@ -6,7 +6,8 @@ import entity.creature.Creature;
 public class Well implements Health {
 
     private static Well instance = new Well();
-    public static Well getInstance(){
+
+    public static Well getInstance() {
         return instance;
     }
 

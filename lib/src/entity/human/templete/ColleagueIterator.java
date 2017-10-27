@@ -6,13 +6,12 @@ import java.util.List;
 
 public class ColleagueIterator implements ColleagueIterable {
 
+    private List<Staff> under;
+    private int index;
     public ColleagueIterator(List<Staff> under) {
         this.under = under;
         index = -1;
     }
-
-    private List<Staff> under;
-    private int index;
 
     @Override
     public boolean hasNextColleague() {

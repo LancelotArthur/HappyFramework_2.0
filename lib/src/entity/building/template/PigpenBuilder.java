@@ -1,9 +1,6 @@
 package entity.building.template;
 
 import entity.building.*;
-import entity.building.template.FoundationA;
-import entity.building.template.RoofA;
-import entity.building.template.WallA;
 
 /**
  * 猪圈建造者
@@ -12,23 +9,23 @@ import entity.building.template.WallA;
 public class PigpenBuilder implements BuildingMaterialFactory {
 
     @Override
-    public Foundation getFoundation() {
-        return new FoundationA();
-    }
-
-    @Override
-    public Wall getWall() {
-        return new WallA();
-    }
-
-    @Override
     public Door getDoor() {
         return new DoorA();
     }
 
     @Override
+    public Foundation getFoundation() {
+        return new FoundationA();
+    }
+
+    @Override
     public Roof getRoof() {
         return new RoofA();
+    }
+
+    @Override
+    public Wall getWall() {
+        return new WallA();
     }
 
 }

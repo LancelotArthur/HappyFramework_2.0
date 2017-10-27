@@ -11,7 +11,7 @@ public abstract class Proxy<T extends Entity> implements Obtainable, Printable {
 
     private Type type;
 
-    private Proxy() {
+    Proxy() {
         Type superclassType = getClass().getGenericSuperclass();
         if (ParameterizedType.class.isAssignableFrom(superclassType.getClass())) {
             type = ((ParameterizedType) superclassType).getActualTypeArguments()[0];

@@ -4,6 +4,6 @@ import entity.building.Foundation;
 
 public class FoundationA extends Foundation {
     public FoundationA() {
-        super(0,50);
+        super(0, 50);
     }
 }

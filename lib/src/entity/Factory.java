@@ -11,17 +11,8 @@ import java.util.Properties;
 
 public class Factory implements Printable {
 
-    private static Properties supportedClasses() {
-        Properties properties = new Properties();
-        try {
-            properties.load(new FileInputStream("lib/properties/factory.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return properties;
-    }
+    private final static HashMap<Class, Class> CLASS_HASH_MAP = new HashMap<>();
 
-    private final static HashMap<Class,Class> CLASS_HASH_MAP = new HashMap<>();
     static {
         CLASS_HASH_MAP.put(Integer.class, int.class);
         CLASS_HASH_MAP.put(Double.class, double.class);
@@ -33,17 +24,16 @@ public class Factory implements Printable {
         CLASS_HASH_MAP.put(Character.class, char.class);
     }
 
-
-    public Entity create(String type){
+    public Entity create(String type) {
 
         return create(type, new Object[]{});
     }
 
-    public Entity create(String type, Object[] propertiesValue){
+    public Entity create(String type, Object[] propertiesValue) {
         Class[] propertiesType = new Class[propertiesValue.length];
-        for (int i = 0; i < propertiesValue.length; ++i){
+        for (int i = 0; i < propertiesValue.length; ++i) {
             propertiesType[i] = propertiesValue[i].getClass();
-            if (CLASS_HASH_MAP.containsKey(propertiesType[i])){
+            if (CLASS_HASH_MAP.containsKey(propertiesType[i])) {
                 propertiesType[i] = CLASS_HASH_MAP.get(propertiesType[i]);
             }
         }
@@ -55,9 +45,9 @@ public class Factory implements Printable {
         Entity entity = null;
         String path;
         try {
-            String capitalized = type.substring(0,1).toUpperCase() + type.substring(1).toLowerCase();
+            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1).toLowerCase();
             path = supportedClasses().getProperty(capitalized);
-            if (path == null){
+            if (path == null) {
                 path = type;
             }
             entity = (Entity) Class.forName(path).getConstructor(propertiesType).newInstance(propertiesValue);
@@ -70,14 +60,24 @@ public class Factory implements Printable {
         } catch (InstantiationException e) {
             print("Cannot Instantiate");
             e.printStackTrace();
-        } catch (NoSuchMethodException e){
+        } catch (NoSuchMethodException e) {
             print("Type not supported");
             e.printStackTrace();
-        } catch (InvocationTargetException e){
+        } catch (InvocationTargetException e) {
             print("Invocation Error");
             e.printStackTrace();
         }
         return entity;
+    }
+
+    private static Properties supportedClasses() {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream("lib/properties/factory.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
     }
 }
 

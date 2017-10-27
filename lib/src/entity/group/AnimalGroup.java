@@ -4,7 +4,7 @@ import behavior.animal.AnimalBehavior;
 import entity.Product;
 import entity.creature.animal.Animal;
 
-class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBehavior {
+public class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBehavior {
     public AnimalGroup(T t, int number) {
         super(t, number);
     }
@@ -25,8 +25,8 @@ class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBehavior {
     @Override
     public Group<Product> yield(int count) {
         Group<Product> products = entity.yield(count * this.count);
-        if (products != null){
-            print("" + this.count +" bodies produced " + products.count + "good products！");
+        if (products != null) {
+            print("" + this.count + " bodies produced " + products.count + "good products！");
         }
         return products;
     }

@@ -69,11 +69,12 @@ public class Prototype implements Printable {
     }
 
     public Entity getByPrototype(String index) {
+        index = index.substring(0, 1).toUpperCase() + index.substring(1).toLowerCase();
         Entity entity = null;
         if (map.containsKey(index)) {
             entity = map.get(index);
         } else {
-            String path = supportedClasses().getProperty(index.substring(0, 1).toUpperCase() + index.substring(1).toLowerCase());
+            String path = supportedClasses().getProperty(index);
             if (map.containsKey(path))
                 entity = map.get(path);
         }

@@ -8,16 +8,13 @@ public abstract class Application implements Printable {
     private Method printDestination = Method.TERMINAL;
     private OutputStream outputStream = null;
 
+    public Application() {
+        print("Constructing application and initializing resources....");
+    }
+
     public void initialize() throws FileNotFoundException {
         File file = new File(DEFAULT_OUTPUT_FILE);
         outputStream = new FileOutputStream(file);
-    }
-
-
-
-
-    public Application() {
-        print("Constructing application and initializing resources....");
     }
 
     public void start() {

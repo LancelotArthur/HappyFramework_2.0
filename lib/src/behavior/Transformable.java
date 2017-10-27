@@ -6,6 +6,7 @@ public interface Transformable<Target extends Entity, Source> {
 
     /**
      * get current type of entity
+     *
      * @return the Entity
      */
     Target getTarget();
@@ -17,6 +18,7 @@ public interface Transformable<Target extends Entity, Source> {
 
     /**
      * get the previous type of the entity
+     *
      * @return the previous class name of this entity
      */
     Source getSource();

@@ -4,6 +4,6 @@ import entity.building.Roof;
 
 public class RoofA extends Roof {
     public RoofA() {
-        super(0,50);
+        super(0, 50);
     }
 }

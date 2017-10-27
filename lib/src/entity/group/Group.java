@@ -1,4 +1,3 @@
-
 package entity.group;
 
 
@@ -23,6 +22,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain a collection of the whole group whose volume is specified by the count field
+     *
      * @return Collection of class T contains all the entities
      */
     public Collection<T> getGroup() {
@@ -32,6 +32,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain a collection of a specific number of entities
+     *
      * @param num
      * @return Collection of class T containing num entities
      */
@@ -57,6 +58,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain the class name of the group entity
+     *
      * @return the class name
      */
     public String getEntityClass() {
@@ -65,6 +67,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain the size of the group
+     *
      * @return size
      */
     public int getGroupSize() {
@@ -73,7 +76,8 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Set or reset the size of group
-     * @param  count
+     *
+     * @param count
      */
     public void setGroupSize(int count) {
         if (count > 0) {
