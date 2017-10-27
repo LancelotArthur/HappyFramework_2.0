@@ -2,13 +2,14 @@ package entity.memento;
 
 
 import entity.Entity;
+import entity.creature.Creature;
 
 import java.util.Stack;
 
 public class CareTaker {
-    private Stack<Memento> undoList = new Stack<Memento>();
-    private Stack<Memento> redoList = new Stack<Memento>();
-    private Entity entity;
+    private Stack<Memento> undoList = new Stack<>();
+    private Stack<Memento> redoList = new Stack<>();
+    private Creature entity;
     private Memento temMemento;
 
 
@@ -20,7 +21,7 @@ public class CareTaker {
         return undoList.get(index);
     }
 
-    public void setEntity(Entity entity) {
+    public void setEntity(Creature entity) {
         this.entity = entity;
     }
 
@@ -29,11 +30,9 @@ public class CareTaker {
     }
 
     public void undo() {
-        if (undoList.isEmpty()) {
-            return;
-        } else {
+        if (!undoList.isEmpty()) {
             temMemento = undoList.pop();
-            entity.setState(temMemento.getState());
+            entity.setHealth(temMemento.getHealth());
             redoList.push(temMemento);
         }
     }
@@ -43,7 +42,7 @@ public class CareTaker {
 
         } else {
             temMemento = redoList.pop();
-            entity.setState(temMemento.getState());
+            entity.setHealth(temMemento.getHealth());
             undoList.push(temMemento);
         }
     }

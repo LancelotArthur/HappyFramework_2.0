@@ -1,7 +1,5 @@
 package behavior;
 
-import allocator.Allocator;
-import allocator.ObtainStrategy;
 import application.Printable;
 import entity.Entity;
 
@@ -10,10 +8,12 @@ public class Transform<Target extends Entity, Source> implements Transformable<T
 
     private Source source;
     private Target target;
+    private Class targetClass;
 
-    public Transform(Source source) {
+    public Transform(Source source, Class targetClass) {
         this.source = source;
         this.target = null;
+        this.targetClass = targetClass;
     }
 
     @Override
@@ -25,14 +25,13 @@ public class Transform<Target extends Entity, Source> implements Transformable<T
         return this.target;
     }
 
+
     @Override
-    public void transform() {
+    @SuppressWarnings(value = {"unchecked"})
+    public void transform() throws IllegalAccessException, InstantiationException {
         print("Transforming " + source.getClass().getSimpleName()
                 + " into " + source.getClass().getSimpleName() + "...");
-        // For completeness of this framework
-        Allocator<Target> allocator = new Allocator<>();
-        allocator.setObtainArguments(ObtainStrategy.PURCHASE);
-        this.target = allocator.obtain();
+        this.target = (Target) targetClass.newInstance();
     }
 
     @Override

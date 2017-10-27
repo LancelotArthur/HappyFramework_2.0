@@ -33,7 +33,7 @@ public class Group<T extends Entity> extends Entity {
     /**
      * Obtain a collection of a specific number of entities
      * @param num
-     * @return Collection of class T contains num  entities
+     * @return Collection of class T containing num entities
      */
     @SuppressWarnings(value = {"unchecked"})
     public Collection<T> getGroup(int num) {

@@ -1,5 +1,6 @@
 package application;
 
+
 public interface Printable {
 
     default String getMethodName() {
@@ -8,10 +9,9 @@ public interface Printable {
         return e.getMethodName();
     }
 
-    default void print(String description){
+    default void print(String description) {
         String className = "<" + this.getClass().toString() + ">";
         String methodName = "[" + this.getMethodName() + "]";
         System.out.printf("%-45s %-15s : %s\n", className, methodName, description);
     }
-
 }

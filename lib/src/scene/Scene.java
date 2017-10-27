@@ -1,6 +1,5 @@
 package scene;
 
-import application.Application;
 import application.Director;
 import application.Printable;
 import entity.Entity;

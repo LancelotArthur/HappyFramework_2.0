@@ -2,7 +2,7 @@ package entity.group;
 
 import behavior.plant.PlantBehavior;
 import entity.Product;
-import entity.plant.Plant;
+import entity.creature.plant.Plant;
 
 
 

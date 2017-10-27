@@ -2,31 +2,33 @@ package allocator;
 
 import application.Printable;
 import entity.Entity;
-import entity.animal.Animal;
-import entity.plant.Plant;
 
-interface Obtainable {
-    Entity obtain();
-}
 
 public class Allocator<T extends Entity> implements Obtainable, Printable {
 
-    private Obtainable proxy = new PurchaseProxy<T>();
+    private Obtainable proxy;
     private T mother = null;
+    private Class type = null;
+
+    public Allocator(Class type) {
+        this.type = type;
+        proxy = new PurchaseProxy<T>(type);
+    }
 
     @SuppressWarnings(value = {"unchecked"})
     public T obtain() {
-        return (T)proxy.obtain();
+        return (T) proxy.obtain();
     }
 
-    public void setMother(T mother) {
+    public Allocator<T> setMother(T mother) {
         this.mother = mother;
+        return setObtainArguments(ObtainStrategy.REPRODUCE);
     }
 
-    public void setObtainArguments(ObtainStrategy obtainStrategy) {
+    public Allocator<T> setObtainArguments(ObtainStrategy obtainStrategy) {
         switch (obtainStrategy) {
             case PURCHASE:
-                this.proxy = new PurchaseProxy<T>();
+                this.proxy = new PurchaseProxy<T>(type);
                 break;
             case REPRODUCE:
                 this.proxy = new ReproduceProxy<>(mother);
@@ -34,52 +36,8 @@ public class Allocator<T extends Entity> implements Obtainable, Printable {
             default:
                 print("No such obtainStrategy.");
         }
+        return this;
     }
 }
 
-class PurchaseProxy<T extends Entity> implements Obtainable, Printable {
-    PurchaseProxy() {
-    }
 
-    public T obtain() {
-        print("Buying something...");
-        return null;
-    }
-}
-
-class ReproduceProxy<T extends Entity> implements Obtainable, Printable {
-
-    private T mother = null;
-
-    ReproduceProxy(T mother) {
-        if (mother == null) {
-            this.mother = null;
-            return;
-        }
-
-        if (Animal.class.isAssignableFrom(mother.getClass())) {
-            // if mother's class extends Animal
-            if (!((Animal) mother).isMale()) {
-                this.mother = mother;
-            } else {
-                print("Male animals cannot reproduce children!");
-            }
-        } else if (Plant.class.isAssignableFrom(mother.getClass())) {
-            // if mother's class extends Plant
-            this.mother = mother;
-        } else {
-            // if mother's class extends another class
-            print("Only animals and plants can reproduce children!");
-        }
-    }
-
-    @SuppressWarnings(value = {"unchecked"})
-    public T obtain() {
-        if (this.mother == null) {
-            print("No available mother. Nothing was born.");
-            return null;
-        }
-        print("A child was born!");
-        return (T) mother.clone();
-    }
-}

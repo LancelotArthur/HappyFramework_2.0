@@ -1,7 +1,7 @@
 package command.animal;
 
 import behavior.human.Commandable;
-import entity.animal.Animal;
+import entity.creature.animal.Animal;
 
 public class ChaseCommand implements Commandable {
 

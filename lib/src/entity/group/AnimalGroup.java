@@ -2,7 +2,7 @@ package entity.group;
 
 import behavior.animal.AnimalBehavior;
 import entity.Product;
-import entity.animal.Animal;
+import entity.creature.animal.Animal;
 
 class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBehavior {
     public AnimalGroup(T t, int number) {

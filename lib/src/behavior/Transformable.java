@@ -13,7 +13,7 @@ public interface Transformable<Target extends Entity, Source> {
     /**
      * activate the transformation, change the type of current class
      */
-    void transform();
+    void transform() throws IllegalAccessException, InstantiationException;
 
     /**
      * get the previous type of the entity
