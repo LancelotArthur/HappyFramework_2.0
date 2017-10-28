@@ -1,45 +1,56 @@
 package entity.human;
 
-import behavior.Performable;
-import behavior.human.Commandable;
+import behavior.skill.Performable;
+import behavior.human.Command;
 import entity.Entity;
+import entity.Product;
+import entity.group.Group;
 
 public abstract class Human extends Entity implements Performable {
 
     protected String name;
-    protected boolean sex;
-    protected double age;
-    protected Commandable command;
+    private boolean gender;
+    private double age;
+    private Command command;
 
-    protected Human(String name, boolean sex) {
-        this(name, sex, 28);
+    Human(String name, boolean gender) {
+        this(name, gender, 28);
     }
 
-    protected Human(String name, boolean sex, double age) {
+    Human(String name, boolean gender, double age) {
         this.name = name;
-        this.sex = sex;
+        this.gender = gender;
         this.age = age;
         this.command = null;
     }
 
-    public Commandable getCommand() {
-        return command;
+    public String getName() {
+        return name;
     }
 
-    public void setCommand(Commandable command) {
+    public boolean isMale() {
+        return gender;
+    }
+
+    public double getAge() {
+        return age;
+    }
+
+
+    public void setCommand(Command command) {
         this.command = command;
     }
 
-    public void doCommand() {
-        command.execute();
+    public Group<Product> doCommand() {
+        return command.execute();
     }
 
     public void undoCommand() {
         command.undo();
     }
 
-    public void redoCommand() {
-        command.redo();
+    public Group<Product> redoCommand() {
+        return command.redo();
     }
 
     @Override

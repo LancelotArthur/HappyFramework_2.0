@@ -1,4 +1,4 @@
-package behavior;
+package behavior.creature;
 
 import entity.Product;
 import entity.group.Group;

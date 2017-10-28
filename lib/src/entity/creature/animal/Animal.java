@@ -1,6 +1,6 @@
 package entity.creature.animal;
 
-import behavior.animal.AnimalBehavior;
+import behavior.creature.animal.AnimalBehavior;
 import entity.creature.Creature;
 import entity.creature.state.pregnancy.Male;
 import entity.creature.state.pregnancy.NonPregnant;
@@ -28,6 +28,10 @@ public abstract class Animal extends Creature implements AnimalBehavior {
         if (gender) {
             pregnancy = Male.getInstance();
         }
+    }
+
+    public void speak(String speech) {
+        print(speech);
     }
 
     protected Animal(String name) {

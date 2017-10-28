@@ -1,4 +1,4 @@
-package behavior;
+package behavior.skill;
 
 import application.Printable;
 

@@ -16,7 +16,7 @@ public class Timer implements Printable {
         return timer;
     }
 
-    public void setStartTime() {
+    public void resetTime() {
         startTime = System.currentTimeMillis();
     }
 

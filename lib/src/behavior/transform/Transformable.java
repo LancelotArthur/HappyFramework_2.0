@@ -1,4 +1,4 @@
-package behavior;
+package behavior.transform;
 
 import entity.Entity;
 
@@ -14,7 +14,7 @@ public interface Transformable<Target extends Entity, Source> {
     /**
      * activate the transformation, change the type of current class
      */
-    void transform() throws IllegalAccessException, InstantiationException;
+    Transformable<Target, Source> transform() throws IllegalAccessException, InstantiationException;
 
     /**
      * get the previous type of the entity

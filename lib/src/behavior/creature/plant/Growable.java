@@ -1,4 +1,4 @@
-package behavior.plant;
+package behavior.creature.plant;
 
 public interface Growable {
     void grow();

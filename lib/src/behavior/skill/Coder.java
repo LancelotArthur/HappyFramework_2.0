@@ -1,7 +1,4 @@
-package behavior.templates;
-
-import behavior.Performable;
-import behavior.Skill;
+package behavior.skill;
 
 public class Coder extends Skill {
     public Coder(Performable performable) {

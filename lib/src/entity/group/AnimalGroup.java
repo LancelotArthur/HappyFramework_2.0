@@ -1,6 +1,6 @@
 package entity.group;
 
-import behavior.animal.AnimalBehavior;
+import behavior.creature.animal.AnimalBehavior;
 import entity.Product;
 import entity.creature.animal.Animal;
 

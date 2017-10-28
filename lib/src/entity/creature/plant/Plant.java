@@ -1,7 +1,7 @@
 package entity.creature.plant;
 
 
-import behavior.plant.PlantBehavior;
+import behavior.creature.plant.PlantBehavior;
 import entity.Entity;
 
 
