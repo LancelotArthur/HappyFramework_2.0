@@ -24,6 +24,8 @@ public class SceneLoader implements Printable {
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             scene = (Scene) objectInputStream.readObject();
+            scene.refreshIndex();
+
         } catch (IOException e) {
             print("Load Failed, Check Your Files");
             e.printStackTrace();

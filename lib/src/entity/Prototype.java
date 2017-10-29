@@ -2,6 +2,7 @@ package entity;
 
 import application.Printable;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -13,7 +14,7 @@ public class Prototype implements Printable {
     private static volatile Prototype instance;
     private HashMap<String, Entity> map = new HashMap<>();
 
-    protected Prototype() {
+    private Prototype() {
         Collection<String> types = supportedClasses().stringPropertyNames();
         for (String type : types) {
             String name = supportedClasses().getProperty(type);
@@ -27,7 +28,9 @@ public class Prototype implements Printable {
     private static Properties supportedClasses() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("lib/properties/prototypes.properties"));
+            File directory = new File("");
+            File file = new File(directory.getCanonicalPath(), "lib/properties/prototypes.properties");
+            properties.load(new FileInputStream(file));
         } catch (IOException e) {
             e.printStackTrace();
         }

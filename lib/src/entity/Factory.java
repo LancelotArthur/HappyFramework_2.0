@@ -11,6 +11,8 @@ import java.util.Properties;
 
 public class Factory implements Printable {
 
+    //TODO MAKE DIRECTORY
+
     private final static HashMap<Class, Class> CLASS_HASH_MAP = new HashMap<>();
 
     static {

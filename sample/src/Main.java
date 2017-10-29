@@ -1,7 +1,6 @@
-import application.ApplicationDispatcher;
-import application.Director;
 import application.SceneLoader;
 import entity.Prototype;
+import entity.building.Builder;
 import scene.Scene;
 
 
@@ -10,12 +9,11 @@ public class Main {
 
         Scene scene = SceneLoader.getInstance().load("Default_0.scene");
         scene.addChild(Prototype.getInstance().getByPrototype("Cow"));
+        scene.addChild(Builder.getInstance().build("Field"));
         SceneLoader.getInstance().save(scene);
 
-        Director.getInstance().setScene(scene).runWithScene();
-
-        ApplicationDispatcher.getInstance().shiftWelcome();
-        Director.getInstance().runWithScene();
-
+        scene = null;
+        scene = SceneLoader.getInstance().load("Default_0.scene");
     }
+
 }

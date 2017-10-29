@@ -13,11 +13,11 @@ public abstract class Human extends Entity implements Performable {
     private double age;
     private Command command;
 
-    Human(String name, boolean gender) {
+    protected Human(String name, boolean gender) {
         this(name, gender, 28);
     }
 
-    Human(String name, boolean gender, double age) {
+    protected Human(String name, boolean gender, double age) {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -37,8 +37,9 @@ public abstract class Human extends Entity implements Performable {
     }
 
 
-    public void setCommand(Command command) {
+    public Human setCommand(Command command) {
         this.command = command;
+        return this;
     }
 
     public Group<Product> doCommand() {

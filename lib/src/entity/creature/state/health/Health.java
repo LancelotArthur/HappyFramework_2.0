@@ -13,7 +13,7 @@ public interface Health extends State, Printable {
 
     default void decline(Creature creature) {
         print("The creature died");
-        creature.setHealth(new Dead());
+        creature.setHealth(Dead.getInstance());
     }
 
     default void report(Creature creature) {

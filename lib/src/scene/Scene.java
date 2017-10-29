@@ -54,5 +54,14 @@ public abstract class Scene implements Printable, Actionable, Serializable {
         return id;
     }
 
+    public void refreshIndex() {
+        HashMap<Long, Entity> newMap = new HashMap<>();
+        for (Entity child : children.values()) {
+            Entity entity = (Entity) child.clone();
+            newMap.put(entity.getId(), entity);
+        }
+        children = newMap;
+    }
+
 
 }
