@@ -2,9 +2,10 @@ package entity.creature.state.health;
 
 import application.Printable;
 import entity.creature.Creature;
+import entity.creature.state.abstraction.State;
 
 
-public interface Health extends Printable {
+public interface Health extends State, Printable {
 
     default void recover(Creature creature) {
         print("The creature is so healthy, running around without looking at you.");

@@ -1,19 +1,20 @@
 package entity.memento;
 
-import entity.creature.state.health.Health;
+import entity.creature.state.abstraction.State;
 
 public class Memento {
-    private Health health = null;
 
-    public Memento(Health health) {
-        this.health = health;
+    private State state = null;
+
+    public Memento(State state) {
+        this.state = state;
     }
 
-    public Health getHealth() {
-        return health;
+    public State getHealth() {
+        return state;
     }
 
-    public void setHealth(Health health) {
-        this.health = health;
+    public void setState(State state) {
+        this.state = state;
     }
 }

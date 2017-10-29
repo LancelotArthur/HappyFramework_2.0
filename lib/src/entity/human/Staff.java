@@ -4,7 +4,9 @@ public abstract class Staff extends Human{
 
     private Leader leader;
 
-    protected Staff(){
+
+    ////
+    Staff() {
         super("BOSS",true, Integer.MAX_VALUE);
     }
 
@@ -20,6 +22,8 @@ public abstract class Staff extends Human{
         Leader.BOSS.employ(this);
     }
 
+
+    //TODO FIX BUG
     void setLeader(Leader leader) {
         this.leader.fire(this);
         leader.employ(this);

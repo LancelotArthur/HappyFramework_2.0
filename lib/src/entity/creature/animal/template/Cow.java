@@ -1,6 +1,6 @@
 package entity.creature.animal.template;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.animal.Animal;
 import entity.creature.animal.template.products.Milk;
 import entity.group.Group;

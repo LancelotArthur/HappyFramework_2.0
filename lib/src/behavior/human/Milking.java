@@ -1,6 +1,6 @@
 package behavior.human;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.animal.template.Cow;
 import entity.group.Group;
 

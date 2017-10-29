@@ -1,14 +1,10 @@
 package entity.building;
 
-/**
- * 楼板的抽象基类
- * material: 0-木质；1-水泥；2-金属
- * area：面积
- */
+
 public abstract class Foundation {
 
-    protected int material = 0;
-    protected int area = 0;
+    private int material = 0;
+    private int area = 0;
 
     public Foundation() {
         this.material = 0;

@@ -2,9 +2,12 @@ package entity;
 
 import application.Printable;
 
+import java.io.Serializable;
 
-public abstract class Entity implements Printable, Cloneable {
 
+public abstract class Entity implements Printable, Cloneable, Serializable {
+
+    private static final long serialVersionUID = 551123659773121209L;
     private static long number = 0;
     private long id;
 

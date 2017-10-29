@@ -7,10 +7,10 @@ package entity.building;
  */
 public abstract class House {
 
-    protected Foundation foundation;
-    protected Wall wall;
-    protected Door door;
-    protected Roof roof;
+    private Foundation foundation;
+    private Wall wall;
+    private Door door;
+    private Roof roof;
 
     public House(Foundation foundation, Wall wall, Door door, Roof roof) {
         this.foundation = foundation;

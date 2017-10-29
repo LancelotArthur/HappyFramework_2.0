@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ECMap {
-    private Map<Entity, CareTaker> map = new HashMap<Entity, CareTaker>();
+    private Map<Entity, CareTaker> map = new HashMap<>();
 
     public CareTaker getCareTaker(Entity entity) {
         return map.get(entity);

@@ -1,14 +1,14 @@
 package entity.human;
 
-import behavior.skill.Performable;
 import behavior.human.Command;
+import behavior.skill.Performable;
 import entity.Entity;
-import entity.Product;
+import entity.creature.Product;
 import entity.group.Group;
 
 public abstract class Human extends Entity implements Performable {
 
-    protected String name;
+    private String name;
     private boolean gender;
     private double age;
     private Command command;

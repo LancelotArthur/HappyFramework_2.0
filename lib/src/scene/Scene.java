@@ -1,46 +1,40 @@
 package scene;
 
-import application.Application;
-import application.Director;
 import application.Printable;
 import entity.Entity;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 
-public abstract class Scene implements Printable, Actionable {
+public abstract class Scene implements Printable, Actionable, Serializable {
 
-    //中介者
-    protected Director mediator;
-    //可直接设置中介者
-    public Scene(String name,Director mediator){
-        sceneName = name;
-        this.mediator = mediator;
-    }
-    //在抽象同事类中添加用于与中介者取得联系（即注册）的方法
-    public void setMediator(Director mediator){
-        this.mediator = mediator;
-    }
-
+    private static final long serialVersionUID = 321498770673451267L;
+    private static long index = 0;
+    private long id;
     private String sceneName;
-    private HashMap<String, Entity> children;
-    private static long id = 0;
+    private HashMap<Long, Entity> children = new HashMap<>();
 
     protected Scene() {
-        sceneName = "Default";
+        this("Default_" + index);
     }
 
     protected Scene(String name) {
         sceneName = name;
+        id = index++;
     }
 
-    public String addChild(Entity entity) {
-        String key = entity.getClass().toString() + " " +id++;
-        children.put("" + key, entity);
+    public Long addChild(Entity entity) {
+        Long key = entity.getId();
+        children.put(key, entity);
         return key;
     }
 
-    public Entity removeChild(String key) {
+    public Entity getChildById(Long key) {
+        return children.get(key);
+    }
+
+    public Entity removeChild(Long key) {
         return children.remove(key);
     }
 
@@ -51,5 +45,14 @@ public abstract class Scene implements Printable, Actionable {
     public void clearChildren() {
         children.clear();
     }
+
+    public String getSceneName() {
+        return sceneName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
 
 }

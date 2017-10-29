@@ -7,8 +7,8 @@ package entity.building;
  */
 public abstract class Roof {
 
-    protected int material = 0;
-    protected int area = 0;
+    private int material = 0;
+    private int area = 0;
 
     public Roof() {
         this.material = 0;

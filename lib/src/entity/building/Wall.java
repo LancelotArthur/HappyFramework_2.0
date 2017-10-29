@@ -6,8 +6,8 @@ package entity.building;
  * height：楼层高度
  */
 public abstract class Wall {
-    protected int material = 0;
-    protected int height = 0;
+    private int material = 0;
+    private int height = 0;
 
     public Wall() {
         this.material = 0;

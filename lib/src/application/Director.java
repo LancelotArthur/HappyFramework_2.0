@@ -1,22 +1,43 @@
 package application;
 
 import scene.Scene;
+import scene.template.HomeScene;
 
-public class Director {
+public class Director implements Printable {
+
     private static Director director = new Director();
-
-
-    private Director() {
-    }
-
-
     public static Director getInstance() {
         return director;
     }
 
+    private Scene currentRunningScene = new HomeScene();
 
-    //场景切换函数，根据传入的信息和信息发送者进行判断后，对场景切换
-    public void setCurrentScene(String message, Scene scene) {
+    private Director() {
 
     }
+
+    public Director setScene(Scene scene) {
+        return setScene("", scene);
+    }
+
+    public Director setScene(String message, Scene scene) {
+        if (currentRunningScene == scene) {
+            return this;
+        }
+        currentRunningScene.end();
+        currentRunningScene = scene;
+        print(message + "Loading Scene: " + scene.getSceneName());
+        scene.init();
+        return this;
+    }
+
+    public Director runWithScene() {
+        currentRunningScene.action();
+        return this;
+    }
+
+    public void finalize() {
+        currentRunningScene.end();
+    }
+
 }

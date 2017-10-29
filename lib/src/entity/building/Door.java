@@ -7,8 +7,8 @@ package entity.building;
  */
 public abstract class Door {
 
-    protected int material = 0;
-    protected int shape = 0;
+    private int material = 0;
+    private int shape = 0;
 
     public Door() {
         this.material = 0;

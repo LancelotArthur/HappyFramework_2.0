@@ -1,6 +1,6 @@
 package entity.creature.plant;
 
-import entity.Product;
+import entity.creature.Product;
 
 public class PlantProduct extends Product {
     protected PlantProduct() {

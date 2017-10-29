@@ -1,4 +1,6 @@
-package application;
+
+import application.Application;
+import application.Director;
 import scene.template.SampleScene;
 
 
@@ -9,18 +11,15 @@ public class SampleApplication extends Application {
     }
 
     @Override
-    public void start() {
-        print("Story Starts");
+    public void initialize() {
+        super.initialize();
     }
 
     @Override
-    public void initialize() {
-        SampleScene s1 = new SampleScene();
-        s1.action();
-        //addScene(s1);
-        SampleScene s2 = new SampleScene();
-        //addScene(s2);
-        SampleScene s3 = new SampleScene();
+    public void start() {
+        print("Story Starts");
+        SampleScene scene = new SampleScene();
+        Director.getInstance().setScene(scene).runWithScene();
     }
 
 

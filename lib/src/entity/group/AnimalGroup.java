@@ -1,7 +1,7 @@
 package entity.group;
 
 import behavior.creature.animal.AnimalBehavior;
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.animal.Animal;
 
 public class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBehavior {

@@ -1,6 +1,6 @@
 package entity.creature.plant.template;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.plant.Plant;
 import entity.group.Group;
 

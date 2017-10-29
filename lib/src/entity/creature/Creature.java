@@ -6,19 +6,22 @@ import entity.creature.state.health.Well;
 import entity.memento.Memento;
 
 public abstract class Creature extends Entity {
+
     private Health health = Well.getInstance();
 
-
-    public void recover() {
+    public Creature recover() {
         health.recover(this);
+        return this;
     }
 
-    public void decline() {
+    public Creature decline() {
         health.decline(this);
+        return this;
     }
 
-    public void report() {
+    public Creature report() {
         health.report(this);
+        return this;
     }
 
     public Health getHealth() {
@@ -26,15 +29,23 @@ public abstract class Creature extends Entity {
     }
 
     //TODO MAKE PRIVATE
-    public void setHealth(Health health) {
+    public Creature setHealth(Health health) {
         this.health = health;
+        return this;
     }
+
 
     public Memento saveStateToMemento() {
         return new Memento(health);
     }
 
-    public void getStateFromMemento(Memento Memento) {
-        health = Memento.getHealth();
+    public void restoreState(Memento Memento) {
+        try {
+            health = (Health) Memento.getHealth();
+        } catch (ClassCastException e) {
+            print("Memento Type Not Compatible");
+            e.printStackTrace();
+        }
+
     }
 }

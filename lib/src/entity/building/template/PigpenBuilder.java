@@ -2,10 +2,7 @@ package entity.building.template;
 
 import entity.building.*;
 
-/**
- * 猪圈建造者
- * 要新建一个猪圈需要创建一个猪圈建造者，然后提供各个部分的材料
- */
+
 public class PigpenBuilder implements BuildingMaterialFactory {
 
     @Override

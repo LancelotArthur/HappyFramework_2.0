@@ -1,6 +1,6 @@
 package behavior.creature;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.group.Group;
 
 

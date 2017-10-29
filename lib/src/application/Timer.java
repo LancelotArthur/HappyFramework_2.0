@@ -28,6 +28,4 @@ public class Timer implements Printable {
         print("Implemented with System.currentTimeMillis().");
         return System.currentTimeMillis();
     }
-
-
 }

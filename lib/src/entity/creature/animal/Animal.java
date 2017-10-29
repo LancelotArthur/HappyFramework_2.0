@@ -30,10 +30,6 @@ public abstract class Animal extends Creature implements AnimalBehavior {
         }
     }
 
-    public void speak(String speech) {
-        print(speech);
-    }
-
     protected Animal(String name) {
         this(name, true, 0);
     }
@@ -44,6 +40,10 @@ public abstract class Animal extends Creature implements AnimalBehavior {
 
     protected Animal(boolean gender) {
         this("", gender, 0);
+    }
+
+    public void speak(String speech) {
+        print(speech);
     }
 
     public boolean isMale() {
@@ -93,6 +93,8 @@ public abstract class Animal extends Creature implements AnimalBehavior {
     public Object clone() {
         Object object = super.clone();
         ((Animal) object).gender = new Random().nextBoolean();
+        ((Animal) object).age = 0;
+
         return object;
     }
 }
