@@ -9,6 +9,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Properties;
 
+/**
+ * Singleton
+ * The prototype class for instantiating classes with prototype support
+ */
 public class Prototype implements Printable {
 
     private static volatile Prototype instance;
@@ -60,6 +64,9 @@ public class Prototype implements Printable {
         map.put(index, entity);
     }
 
+    /**
+     * Get instance
+     */
     public static Prototype getInstance() {
         if (instance == null) {
             synchronized (Prototype.class) {
@@ -71,6 +78,12 @@ public class Prototype implements Printable {
         return instance;
     }
 
+    /**
+     * Use the index to instantiate an entity.
+     *
+     * @param index the string index to access prototype, either the class name or class name alongside with package
+     * @return the instantiated entity, cloned from the prototype
+     */
     public Entity getByPrototype(String index) {
         index = index.substring(0, 1).toUpperCase() + index.substring(1).toLowerCase();
         Entity entity = null;

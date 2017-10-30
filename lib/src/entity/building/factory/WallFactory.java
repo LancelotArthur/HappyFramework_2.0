@@ -4,7 +4,10 @@ import entity.building.abstraction.Wall;
 import entity.building.template.WallA;
 import entity.building.template.WallB;
 
-public class WallFactory extends AbstractFactory {
+/**
+ * Wall Factory
+ * */
+public class WallFactory extends PartFactory {
 
     private static WallFactory instance = new WallFactory();
 
@@ -12,10 +15,13 @@ public class WallFactory extends AbstractFactory {
         super();
     }
 
-    public static WallFactory getInstance() {
+    static WallFactory getInstance() {
         return instance;
     }
 
+    /**
+     * @return a random wall
+     * */
     public Wall obtain() {
         if (RANDOM.nextBoolean()) {
             return new WallA();

@@ -3,6 +3,12 @@ package entity.human;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Leader Class
+ * May have subordinates of class Staff, either leader or farmhand
+ * @see Farmhand
+ * @see Staff
+ * */
 public class Leader extends Staff {
 
     static final Leader BOSS = new Leader();

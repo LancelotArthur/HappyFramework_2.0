@@ -1,5 +1,9 @@
 package entity.building.abstraction;
 
+
+/**
+ * Abstract Class Door
+ * */
 public abstract class Door extends Part {
 
     Material material;

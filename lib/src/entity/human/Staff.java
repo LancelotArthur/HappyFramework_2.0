@@ -1,11 +1,17 @@
 package entity.human;
 
+
+/**
+ * Abstract Staff Class,
+ * inherited by Leader and Farmhand
+ * @see Leader
+ * @see Farmhand
+ * */
 public abstract class Staff extends Human{
 
     private Leader leader;
 
 
-    ////
     Staff() {
         super("BOSS",true, Integer.MAX_VALUE);
     }
@@ -23,7 +29,6 @@ public abstract class Staff extends Human{
     }
 
 
-    //TODO FIX BUG
     void setLeader(Leader leader) {
         this.leader.fire(this);
         leader.employ(this);
@@ -33,6 +38,11 @@ public abstract class Staff extends Human{
         this.leader = leader;
     }
 
+    /**
+     * Get an iterator of the colleagues of the staff
+     *
+     * @return the iterator of the colleagues of this staff
+     * */
     public StaffIterator getColleagues(){
         if (this.leader == null){
             print("I am Boss.");

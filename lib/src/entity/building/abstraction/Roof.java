@@ -1,6 +1,9 @@
 package entity.building.abstraction;
 
 
+/**
+ * Abstract Class Roof
+ * */
 public abstract class Roof extends Part {
 
     Material material;

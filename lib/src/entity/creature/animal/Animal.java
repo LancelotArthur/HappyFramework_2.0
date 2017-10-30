@@ -6,9 +6,14 @@ import entity.creature.state.pregnancy.Male;
 import entity.creature.state.pregnancy.NonPregnant;
 import entity.creature.state.pregnancy.Pregnancy;
 import entity.creature.state.pregnancy.Pregnant;
-
 import java.util.Random;
 
+/**
+ * The Abstract Animal Class
+ * Base class for all animals
+ *
+ * @see Creature
+ * */
 public abstract class Animal extends Creature implements AnimalBehavior {
 
     private boolean gender;
@@ -17,6 +22,7 @@ public abstract class Animal extends Creature implements AnimalBehavior {
     private Pregnancy pregnancy = NonPregnant.getInstance();
 
 
+    /**Constructors*/
     protected Animal(String name, boolean gender) {
         this(name, gender, 0);
     }
@@ -42,10 +48,18 @@ public abstract class Animal extends Creature implements AnimalBehavior {
         this("", gender, 0);
     }
 
+
+    /**
+     * Speak the specified message, print to console
+     * */
     public void speak(String speech) {
         print(speech);
     }
 
+
+    /**
+     * @return if the animal is male.
+     * */
     public boolean isMale() {
         return gender;
     }
@@ -54,6 +68,10 @@ public abstract class Animal extends Creature implements AnimalBehavior {
         this.gender = isMale;
     }
 
+
+    /**
+     * @return the animal's name
+     * */
     public String getName() {
         return name;
     }
@@ -62,6 +80,10 @@ public abstract class Animal extends Creature implements AnimalBehavior {
         this.name = name;
     }
 
+
+    /**
+     * @return the animal's age
+     * */
     public double getAge() {
         return age;
     }
@@ -75,20 +97,38 @@ public abstract class Animal extends Creature implements AnimalBehavior {
         this.pregnancy = pregnancy;
     }
 
+    /**
+     * @return if the animal is pregnant
+     * */
     public boolean isPregnant() {
         return (pregnancy == Pregnant.getInstance());
     }
 
 
+    /**
+     * Pair the animal,
+     * making it pregnant, if not female and not pregnant.
+     * unchanged otherwise
+     * */
     public void pair() {
         pregnancy.pair(this);
     }
 
+    /**
+     * Demand the animal give birth
+     * return an Animal copy, making it non-pregnant, if female and pregnant.
+     * unchanged otherwise
+     * @return an animal copy
+     * */
     public Animal giveBirth() {
         return pregnancy.giveBirth(this);
     }
 
 
+    /**
+     * Override the object clone() method,
+     * return the same animal, age reset, gender set randomly
+     * */
     @Override
     public Object clone() {
         Object object = super.clone();

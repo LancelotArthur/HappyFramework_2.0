@@ -3,9 +3,16 @@ package entity.human.handler;
 import application.Printable;
 import entity.human.Staff;
 
+
+/**
+ * Handler Chain Class, each node contains a staff and a next handler
+ * */
 public class HandlerChain implements Printable {
     private Handler first;
 
+    /**
+     * Constructor using staff array and level array
+     * */
     public HandlerChain(Staff[] staffs, int[] levels) {
 
         if (staffs.length != levels.length || staffs.length <= 0 || levels.length <= 0) {
@@ -22,6 +29,9 @@ public class HandlerChain implements Printable {
         }
     }
 
+    /**
+     * @return Get the first handler of the chain
+     * */
     public Handler getHandler() {
         return first;
     }

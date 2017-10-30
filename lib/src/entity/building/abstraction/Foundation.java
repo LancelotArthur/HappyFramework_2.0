@@ -1,6 +1,9 @@
 package entity.building.abstraction;
 
 
+/**
+ * Abstract Class Foundation
+ * */
 public abstract class Foundation extends Part {
 
     Material material;

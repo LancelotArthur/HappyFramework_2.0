@@ -4,6 +4,11 @@ import scene.Scene;
 
 import java.io.*;
 
+
+/**
+ * Singleton
+ * The SceneLoader, saves and loads a scene
+ */
 public class SceneLoader implements Printable {
 
     private static SceneLoader instance = new SceneLoader();
@@ -11,10 +16,19 @@ public class SceneLoader implements Printable {
     private SceneLoader() {
     }
 
+    /**
+     * Get the instance
+     */
     public static SceneLoader getInstance() {
         return instance;
     }
 
+    /**
+     * Read the scene specified by path, relative to the project scene folder, ~/scenes
+     *
+     * @param path the path specifies what scene to load
+     * @return The scene loaded from file, null if error occurs.
+     */
     public Scene load(String path) {
         print("Reading...");
         Scene scene = null;
@@ -36,8 +50,17 @@ public class SceneLoader implements Printable {
         return scene;
     }
 
-    public void save(Scene scene) {
+    /**
+     * Save the scene as the specifed name
+     *
+     * @param scene the scene to be saved
+     * @param name  the filename to be used
+     */
+    public void save(Scene scene, String name) {
         print("Saving your scene, under __project_name__/scenes file folder");
+        if (name.substring(name.length() - 6).equals(".scene")) {
+            name += ".scene";
+        }
         try {
             boolean flag = true;
             File current = new File("");
@@ -46,7 +69,7 @@ public class SceneLoader implements Printable {
             if (!directory.exists()) {
                 flag = directory.mkdirs();
             }
-            File file = new File(directory, scene.getSceneName() + ".scene");
+            File file = new File(directory, name + ".scene");
             if (!file.exists()) {
                 flag &= file.createNewFile();
             }

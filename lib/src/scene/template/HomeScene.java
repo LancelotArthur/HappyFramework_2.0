@@ -2,6 +2,10 @@ package scene.template;
 
 import scene.Scene;
 
+
+/**
+ * Template Home Scene
+ * */
 public class HomeScene extends Scene {
 
     public HomeScene() {

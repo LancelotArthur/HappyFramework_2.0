@@ -4,7 +4,10 @@ import entity.building.abstraction.Foundation;
 import entity.building.template.FoundationA;
 import entity.building.template.FoundationB;
 
-public class FoundationFactory extends AbstractFactory {
+/**
+ * Foundation Factory
+ * */
+public class FoundationFactory extends PartFactory {
 
     private static FoundationFactory instance = new FoundationFactory();
 
@@ -12,10 +15,13 @@ public class FoundationFactory extends AbstractFactory {
         super();
     }
 
-    public static FoundationFactory getInstance() {
+    static FoundationFactory getInstance() {
         return instance;
     }
 
+    /**
+     * @return a random foundation
+     * */
     public Foundation obtain() {
         if (RANDOM.nextBoolean()) {
             return new FoundationA();

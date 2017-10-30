@@ -5,6 +5,12 @@ import entity.creature.Product;
 import entity.creature.plant.Plant;
 
 
+/**
+ * Concrete Plant Group, can perform Plant behavior
+ *
+ * @see Plant
+ * @see Group
+ * */
 public class PlantGroup<T extends Plant> extends Group<T> implements PlantBehavior {
     public PlantGroup(T t, int number) {
         super(t, number);

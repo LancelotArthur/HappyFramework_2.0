@@ -10,10 +10,10 @@ public class Main {
         Scene scene = SceneLoader.getInstance().load("Default_0.scene");
         scene.addChild(Prototype.getInstance().getByPrototype("Cow"));
         scene.addChild(Builder.getInstance().build("Field"));
-        SceneLoader.getInstance().save(scene);
-
+        SceneLoader.getInstance().save(scene,"hello");
         scene = null;
         scene = SceneLoader.getInstance().load("Default_0.scene");
+        scene.print("Description");
     }
 
 }

@@ -9,9 +9,19 @@ import java.util.HashMap;
 import java.util.Properties;
 
 
+/**
+ * Singleton
+ * Factory Method for instantiating non-prototype entities
+ */
 public class Factory implements Printable {
 
-    //TODO MAKE DIRECTORY
+    private static Factory instance = new Factory();
+    public static Factory getInstance(){
+        return instance;
+    }
+    private Factory(){
+
+    }
 
     private final static HashMap<Class, Class> CLASS_HASH_MAP = new HashMap<>();
 
@@ -26,11 +36,25 @@ public class Factory implements Printable {
         CLASS_HASH_MAP.put(Character.class, char.class);
     }
 
+    /**
+     * Create an entity of the specified type
+     *
+     * @param type typename to be instantiated, either class name or the class name alongside with the package
+     * @return Entity with type specified
+     */
     public Entity create(String type) {
 
         return create(type, new Object[]{});
     }
 
+    /**
+     * Create an entity of the specified type, with propertiesValue used to initialize the entity
+     *
+     * @param type            typename to be instantiated, either class name or the class name alongside with the package
+     * @param propertiesValue propertiesValue is used to construct an entity, the types of the elements in the array must
+     *                        correspond to one of the constructors defined
+     * @return Entity with type specified, and initiated with propertiesValue
+     */
     public Entity create(String type, Object[] propertiesValue) {
         Class[] propertiesType = new Class[propertiesValue.length];
         for (int i = 0; i < propertiesValue.length; ++i) {
@@ -42,6 +66,16 @@ public class Factory implements Printable {
         return create(type, propertiesType, propertiesValue);
     }
 
+
+    /**
+     * Create an entity of the specified type, with propertiesValue used to initialize the entity
+     *
+     * @param type            typename to be instantiated, either class name or the class name alongside with the package
+     * @param propertiesValue propertiesValue is used to construct an entity, the types of the elements in the array must
+     *                        correspond to one of the constructors defined
+     * @param propertiesType  specify the classes of elements in propertiesValue explicitly
+     * @return Entity with type specified, and initiated with propertiesValue
+     */
     public Entity create(String type, Class[] propertiesType, Object[] propertiesValue) {
 
         Entity entity = null;

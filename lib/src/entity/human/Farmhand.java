@@ -1,5 +1,11 @@
 package entity.human;
 
+/**
+ * Farmhand Class
+ *
+ * @see Leader
+ * @see Farmhand
+ * */
 public class Farmhand extends Staff {
 
     public Farmhand(String name, boolean gender) {

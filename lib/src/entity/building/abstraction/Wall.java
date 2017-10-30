@@ -1,5 +1,9 @@
 package entity.building.abstraction;
 
+
+/**
+ * Abstract Class Wall
+ * */
 public abstract class Wall extends Part {
     Material material;
     int height;

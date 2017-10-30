@@ -2,6 +2,10 @@ package scene.template;
 
 import scene.Scene;
 
+
+/**
+ * Template Welcome Scene
+ * */
 public class WelcomeScene extends Scene {
     public WelcomeScene() {
         super();

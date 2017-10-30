@@ -2,10 +2,14 @@ package behavior.transform;
 
 import entity.Entity;
 
+
+/**
+ * The Adapter interface, transforms Target class to Source class
+ */
 public interface Transformable<Target extends Entity, Source> {
 
     /**
-     * get current type of entity
+     * Get entity of current type
      *
      * @return the Entity
      */
@@ -13,6 +17,9 @@ public interface Transformable<Target extends Entity, Source> {
 
     /**
      * activate the transformation, change the type of current class
+     *
+     * @throws IllegalAccessException innate
+     * @throws InstantiationException innate
      */
     Transformable<Target, Source> transform() throws IllegalAccessException, InstantiationException;
 

@@ -2,6 +2,10 @@ package scene.template;
 
 import scene.Scene;
 
+
+/**
+ * Template End Scene
+ * */
 public class EndScene extends Scene {
 
     public EndScene() {

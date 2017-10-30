@@ -4,6 +4,13 @@ import behavior.creature.animal.AnimalBehavior;
 import entity.creature.Product;
 import entity.creature.animal.Animal;
 
+
+/**
+ * Concrete Animal Group, can perform Animal behavior
+ *
+ * @see Animal
+ * @see Group
+ * */
 public class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBehavior {
     public AnimalGroup(T t, int number) {
         super(t, number);

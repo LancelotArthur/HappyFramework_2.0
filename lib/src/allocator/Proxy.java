@@ -6,7 +6,9 @@ import entity.Entity;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-
+/**
+ * Abstract Class Proxy, extended by all proxies
+ */
 public abstract class Proxy<T extends Entity> implements Obtainable, Printable {
 
     private Type type;
@@ -18,11 +20,18 @@ public abstract class Proxy<T extends Entity> implements Obtainable, Printable {
         }
     }
 
+    /**
+     * @return Entity, of class T
+     */
     @Override
     public Entity obtain() {
         return null;
     }
 
+
+    /**
+     * @return The typename of class T
+     */
     protected String getTypename() {
         return type.getTypeName();
     }

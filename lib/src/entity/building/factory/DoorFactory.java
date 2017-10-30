@@ -4,7 +4,10 @@ import entity.building.abstraction.Door;
 import entity.building.template.DoorA;
 import entity.building.template.DoorB;
 
-public class DoorFactory extends AbstractFactory {
+/**
+ * Door Factory
+ * */
+public class DoorFactory extends PartFactory {
 
     private static DoorFactory instance = new DoorFactory();
 
@@ -12,10 +15,13 @@ public class DoorFactory extends AbstractFactory {
         super();
     }
 
-    public static DoorFactory getInstance() {
+    static DoorFactory getInstance() {
         return instance;
     }
 
+    /**
+     * @return a random door
+     * */
     public Door obtain() {
         if (RANDOM.nextBoolean()) {
             return new DoorA();

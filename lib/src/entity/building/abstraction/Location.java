@@ -3,7 +3,9 @@ package entity.building.abstraction;
 import application.Printable;
 import entity.Entity;
 
-
+/**
+ * Abstract Class Location, represents different places on farm
+ * */
 public class Location extends Entity implements Printable {
 
     private String name;
@@ -21,6 +23,9 @@ public class Location extends Entity implements Printable {
         this.roof = roof;
     }
 
+    /**
+     * A brief descriptive console message
+     * */
     public void enter() {
         print("Entering The Location...");
         print("The door: Material: " + door.material + " Shape: " + door.shape);
