@@ -8,12 +8,14 @@ import entity.Factory;
  */
 public class PurchaseProxy<T extends Entity> extends Proxy<T> {
 
+    Object[] objects;
     private static Factory factory = Factory.getInstance();
     private Class type;
 
-    PurchaseProxy(Class type) {
+    PurchaseProxy(Class type, Object[] objects) {
         super();
         this.type = type;
+        this.objects = objects;
     }
 
 
@@ -25,7 +27,7 @@ public class PurchaseProxy<T extends Entity> extends Proxy<T> {
     @SuppressWarnings(value = {"unchecked"})
     public T obtain() {
         print("Buying something...");
-        Entity entity = factory.create(type.getTypeName());
+        Entity entity = factory.create(type.getTypeName(),objects);
         return (T) entity;
     }
 }

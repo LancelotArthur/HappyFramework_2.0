@@ -33,7 +33,7 @@ public class AnimalGroup<T extends Animal> extends Group<T> implements AnimalBeh
     public Group<Product> yield(int count) {
         Group<Product> products = entity.yield(count * this.count);
         if (products != null) {
-            print("" + this.count + " bodies produced " + products.count + "good products！");
+            print("" + this.count + " bodies produced " + products.count + " good products！");
         }
         return products;
     }

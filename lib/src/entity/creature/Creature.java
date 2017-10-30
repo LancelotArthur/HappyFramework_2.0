@@ -58,6 +58,7 @@ public abstract class Creature extends Entity {
      * */
     public Creature setHealth(Health health) {
         this.health = health;
+        print(health.getClass().getSimpleName());
         return this;
     }
 }
