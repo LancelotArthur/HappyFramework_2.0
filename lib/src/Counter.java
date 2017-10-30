@@ -82,7 +82,6 @@ public class Counter {
         }
     }
 
-    //是否是空行
     public boolean isBlankLine(String i) {
         if (i.trim().length() == 0) {
             return false;
