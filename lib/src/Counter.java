@@ -51,7 +51,7 @@ public class Counter {
                 if (s.isDirectory()) {
                     continue;
                 }
-                if (s.getName().lastIndexOf(".java") <= 0 && s.getName().lastIndexOf(".jsp") <= 0 && s.getName().lastIndexOf(".js") <= 0 && s.getName().lastIndexOf(".css") <= 0) {
+                if (s.getName().lastIndexOf(".java") <= 0) {
                     continue;
                 }
                 fr = new FileReader(s);
@@ -61,8 +61,8 @@ public class Counter {
                     if (isBlankLine(i))
                         linenumber++;
                 }
-                System.out.print(s.getName());
-                System.out.println("\t\thas " + (linenumber - yuan) + "lines");
+
+                System.out.printf("%-30s : %-20s lines\n", s.getName(), (linenumber - yuan));
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -18,6 +18,7 @@ public class PurchaseProxy<T extends Entity> extends Proxy<T> {
         this.objects = objects;
     }
 
+
     /**
      * Using the factory to generate a new entity
      *
