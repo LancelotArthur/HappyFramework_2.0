@@ -3,38 +3,62 @@ package entity.creature;
 import entity.Entity;
 import entity.creature.state.health.Health;
 import entity.creature.state.health.Well;
-import entity.memento.Memento;
 
+/**
+ * The Abstract Creature class, base classes for all animals and plants
+ *
+ * @see entity.creature.plant.Plant
+ * @see entity.creature.animal.Animal
+ */
 public abstract class Creature extends Entity {
+
     private Health health = Well.getInstance();
 
-
-    public void recover() {
+    /**
+     * Recover method shifts the Creature to a better health state
+     *
+     * @return self
+     */
+    public Creature recover() {
         health.recover(this);
+        return this;
     }
 
-    public void decline() {
+    /**
+     * Decline method shifts the Creature to a worse health state
+     *
+     * @return self
+     */
+    public Creature decline() {
         health.decline(this);
+        return this;
     }
 
-    public void report() {
+    /**
+     * Report method reports the Creature's health state to the console
+     *
+     * @return self
+     */
+    public Creature report() {
         health.report(this);
+        return this;
     }
 
+    /**
+     * @return the health state of this object
+     * */
     public Health getHealth() {
         return this.health;
     }
 
     //TODO MAKE PRIVATE
-    public void setHealth(Health health) {
+    /**
+     * @param health the health state (singleton) to be set
+     * @return self
+     * */
+    public Creature setHealth(Health health) {
         this.health = health;
-    }
-
-    public Memento saveStateToMemento() {
-        return new Memento(health);
-    }
-
-    public void getStateFromMemento(Memento Memento) {
-        health = Memento.getHealth();
+        print(health.getClass().getSimpleName());
+        return this;
     }
 }

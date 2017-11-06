@@ -1,54 +1,43 @@
 package application;
 
-import java.io.*;
+import java.io.File;
 
+
+/**
+ * Abstract Application class represents the whole process through which, data accesses and manipulations can be applied.
+ * One application should be instantiated for one program.
+ * The application first be initialized, calling initialize(). and start processing by calling start() function.
+ */
 public abstract class Application implements Printable {
 
-    private final String DEFAULT_OUTPUT_FILE = "Log.txt";
-    private Method printDestination = Method.TERMINAL;
-    private OutputStream outputStream = null;
 
-    public void initialize() throws FileNotFoundException {
-        File file = new File(DEFAULT_OUTPUT_FILE);
-        outputStream = new FileOutputStream(file);
-    }
-
-
-
-
+    /**
+     * Default Constructor
+     */
     public Application() {
+
+    }
+
+    /**
+     * Program Initializer, should be called each time the program first executes/
+     */
+    public void initialize() {
         print("Constructing application and initializing resources....");
+        File file = new File("/lib");
+        print(file.getAbsolutePath());
     }
 
+    /**
+     * Program Entrance
+     */
     public void start() {
-
     }
 
-    public void end() throws IOException {
-        outputStream.close();
-    }
+    /**
+     * Program Finalizer, should be called each time the program finished execution.
+     */
+    public void end() {
 
-    public void printToTerminal() throws IOException {
-        if (outputStream != null) {
-            outputStream.close();
-        }
-        printDestination = Method.TERMINAL;
-    }
-
-    public void logToFile() throws IOException {
-        logToFile(DEFAULT_OUTPUT_FILE);
-    }
-
-    public void logToFile(String filename) throws IOException {
-        if (outputStream != null) {
-            outputStream.close();
-        }
-        File file = new File(filename);
-        outputStream = new FileOutputStream(file);
-    }
-
-    enum Method {
-        TERMINAL, LOG
     }
 }
 

@@ -1,6 +1,6 @@
 package entity.creature.animal.template;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.animal.Animal;
 import entity.group.Group;
 
@@ -44,7 +44,7 @@ public class Dog extends Animal {
             // TODO: return what?
             return null;
         } else {
-          return null;
+            return null;
         }
     }
 }

@@ -2,18 +2,23 @@ package entity;
 
 import application.Printable;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Properties;
 
+/**
+ * Singleton
+ * The prototype class for instantiating classes with prototype support
+ */
 public class Prototype implements Printable {
 
     private static volatile Prototype instance;
     private HashMap<String, Entity> map = new HashMap<>();
 
-    protected Prototype() {
+    private Prototype() {
         Collection<String> types = supportedClasses().stringPropertyNames();
         for (String type : types) {
             String name = supportedClasses().getProperty(type);
@@ -27,7 +32,9 @@ public class Prototype implements Printable {
     private static Properties supportedClasses() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("lib/properties/prototypes.properties"));
+            File directory = new File("");
+            File file = new File(directory.getCanonicalPath(), "lib/properties/prototypes.properties");
+            properties.load(new FileInputStream(file));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,6 +64,9 @@ public class Prototype implements Printable {
         map.put(index, entity);
     }
 
+    /**
+     * Get instance
+     */
     public static Prototype getInstance() {
         if (instance == null) {
             synchronized (Prototype.class) {
@@ -68,12 +78,19 @@ public class Prototype implements Printable {
         return instance;
     }
 
+    /**
+     * Use the index to instantiate an entity.
+     *
+     * @param index the string index to access prototype, either the class name or class name alongside with package
+     * @return the instantiated entity, cloned from the prototype
+     */
     public Entity getByPrototype(String index) {
+        index = index.substring(0, 1).toUpperCase() + index.substring(1).toLowerCase();
         Entity entity = null;
         if (map.containsKey(index)) {
             entity = map.get(index);
         } else {
-            String path = supportedClasses().getProperty(index.substring(0, 1).toUpperCase() + index.substring(1).toLowerCase());
+            String path = supportedClasses().getProperty(index);
             if (map.containsKey(path))
                 entity = map.get(path);
         }

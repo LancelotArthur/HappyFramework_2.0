@@ -1,9 +1,10 @@
 package entity.building.template;
 
-import entity.building.Roof;
+import entity.building.abstraction.Material;
+import entity.building.abstraction.Roof;
 
 public class RoofA extends Roof {
     public RoofA() {
-        super(0,50);
+        super(Material.METAL, 100);
     }
 }

@@ -1,7 +1,8 @@
 package entity.creature.animal.template;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.animal.Animal;
+import entity.creature.animal.template.products.Egg;
 import entity.group.Group;
 
 public class Chicken extends Animal {
@@ -41,8 +42,7 @@ public class Chicken extends Animal {
     public Group<Product> yield(int count) {
         print("Producing");
         if (!this.isMale()) {
-            // TODO: return what?
-            return null;
+            return new Group<>(new Egg(),count);
         } else {
             return null;
         }

@@ -1,9 +1,11 @@
 package entity.building.template;
 
-import entity.building.Door;
+import entity.building.abstraction.Door;
+import entity.building.abstraction.Material;
+import entity.building.abstraction.Shape;
 
 public class DoorB extends Door {
     public DoorB() {
-        super(1,0);
+        super(Material.METAL, Shape.CIRCLE);
     }
 }

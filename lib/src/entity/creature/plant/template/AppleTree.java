@@ -1,7 +1,8 @@
 package entity.creature.plant.template;
 
-import entity.Product;
+import entity.creature.Product;
 import entity.creature.plant.Plant;
+import entity.creature.plant.template.product.Apple;
 import entity.group.Group;
 
 public class AppleTree extends Plant {

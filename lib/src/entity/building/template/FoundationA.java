@@ -1,9 +1,10 @@
 package entity.building.template;
 
-import entity.building.Foundation;
+import entity.building.abstraction.Foundation;
+import entity.building.abstraction.Material;
 
 public class FoundationA extends Foundation {
     public FoundationA() {
-        super(0,50);
+        super(Material.METAL, 100);
     }
 }

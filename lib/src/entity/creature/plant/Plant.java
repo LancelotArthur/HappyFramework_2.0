@@ -1,15 +1,18 @@
 package entity.creature.plant;
 
 
-import behavior.plant.PlantBehavior;
-import entity.Entity;
+import behavior.creature.plant.PlantBehavior;
+import entity.creature.Creature;
 
 
-public abstract class Plant extends Entity implements PlantBehavior {
+/**
+ * The Abstract Plant Class
+ * Base class for all plants
+ * */
+public abstract class Plant extends Creature implements PlantBehavior {
     protected Plant() {
         super();
     }
-
 }
 
 

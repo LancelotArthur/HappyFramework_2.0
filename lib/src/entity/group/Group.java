@@ -1,18 +1,22 @@
-
 package entity.group;
 
 
 import entity.Entity;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * The Class Group defines an encapsulation of an aggregation of entities.
+ * */
 public class Group<T extends Entity> extends Entity {
 
     protected T entity;
     protected int count;
     protected boolean realized = false;
 
+    /**
+     * Constructor, defines a group of T entity of number
+     * */
     public Group(T entity, int count) {
         if (count < 0) {
             count = 0;
@@ -23,6 +27,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain a collection of the whole group whose volume is specified by the count field
+     *
      * @return Collection of class T contains all the entities
      */
     public Collection<T> getGroup() {
@@ -32,7 +37,8 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain a collection of a specific number of entities
-     * @param num
+     *
+     * @param num thr number of entities
      * @return Collection of class T containing num entities
      */
     @SuppressWarnings(value = {"unchecked"})
@@ -57,6 +63,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain the class name of the group entity
+     *
      * @return the class name
      */
     public String getEntityClass() {
@@ -65,6 +72,7 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Obtain the size of the group
+     *
      * @return size
      */
     public int getGroupSize() {
@@ -73,9 +81,13 @@ public class Group<T extends Entity> extends Entity {
 
     /**
      * Set or reset the size of group
-     * @param  count
+     *
+     * @param count the count of the group
      */
     public void setGroupSize(int count) {
+        if (realized){
+            print("Error Resetting: Already Instantiated");
+        }
         if (count > 0) {
             this.count = count;
         }
